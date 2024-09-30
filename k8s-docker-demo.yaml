@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-deployment-kub
+spec:
+  selector:
+    matchLabels:
+      app: docker-demo-kub
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: docker-demo-kub
+    spec:
+      containers:
+      - name: docker-demo-kub
+        image: spingboot-k8s #ramana11/rams-docker-repo:docker-demo-hub
+        ports:
+        - containerPort: 8080
